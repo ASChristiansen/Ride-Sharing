@@ -1,9 +1,9 @@
 import os
 # Base directory
-base_path = r"C:\Users\Amand\OneDrive\Dokumenter\Københavns Universitet\3. år\Bachelorprojekt\Large instances"
+base_path = r"C:\Users\" # Input the location of the instances
 
-# Variable for the specific instance name (Modify this when needed)
-instance_name = "P-n15-k5"
+# Variable for the specific instance name (Alter as needed)
+instance_name = "P-n12-k3"
 
 # Construct full file path
 filename = os.path.join(base_path, f"{instance_name}.txt")
