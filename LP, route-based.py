@@ -10,9 +10,9 @@ import itertools
 from Data_from_txt import extract_sets
 
 # Base directory
-base_path = r"C:\Users\Amand\OneDrive\Dokumenter\Københavns Universitet\3. år\Bachelorprojekt\Large instances"
+base_path = r"C:\Users\" # Input the location of the instances
 
-# Variable for the specific instance name (Modify this when needed)
+# Variable for the specific instance name (Alter as needed)
 instance_name = "A-n39-k13"
 
 # Construct full file path
@@ -227,24 +227,23 @@ else:
 
     print(f"\n⚠️ No feasible solution found. Status: {model.Status}")
 
-# ✅ Convert to DataFrames
+# Converting to DataFrames
 df_solution = pd.DataFrame(solution_summary, columns=["Info", "Value"])
 df_routes = pd.DataFrame(routes, columns=["Vehicle", "Route", "Cost", "Revenue", "Profit"])
 
-# ✅ Reset index
+# Reset index
 df_solution.reset_index(drop=True, inplace=True)
 df_routes.reset_index(drop=True, inplace=True)
 
-# ✅ Add blank row for spacing
 spacing_row = pd.DataFrame([["", "", "", "", ""]], columns=df_routes.columns)
 
-# ✅ Combine summary and routes into one sheet
+# Combining summary and routes into one sheet
 df_combined = pd.concat([df_solution, spacing_row, df_routes], ignore_index=True)
 
-# ✅ Define Excel file path and sheet name
-output_file = r"C:\Users\Amand\OneDrive\Dokumenter\Københavns Universitet\3. år\Bachelorprojekt\LP_Route_Based.xlsx"
+# Excel file path and sheet name
+output_file = r"C:\Users\" # Input the location of the results
 
-# ✅ Export to Excel (append or create)
+# Export to Excel (append or create)
 try:
     with pd.ExcelWriter(output_file, engine="openpyxl", mode="a", if_sheet_exists="new") as writer:
         df_combined.to_excel(writer, sheet_name=instance_name, index=False)
