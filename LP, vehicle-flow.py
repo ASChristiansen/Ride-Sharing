@@ -198,7 +198,7 @@ spacing_row = pd.DataFrame([["", "", "", ""]], columns=df_routes.columns)
 df_combined = pd.concat([df_solution, spacing_row, df_routes], ignore_index=True)
 
 # Define output file location
-output_file = r"C:\Users\" # Input the location of the instances
+output_file = r"C:\Users\" # Input the location of the results
 
 # Load existing Excel file if it exists, otherwise create a new one
 try:
