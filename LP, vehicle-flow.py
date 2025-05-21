@@ -9,10 +9,10 @@ import os
 from Data_from_txt import extract_sets
 
 # Base directory
-base_path = r"C:\Users\Amand\OneDrive\Dokumenter\Københavns Universitet\3. år\Bachelorprojekt\Large instances"
+base_path = r"C:\Users\" # Input the location of the instances
 
-# Variable for the specific instance name (Modify this when needed)
-instance_name = "B-n39-k12"
+# Variable for the specific instance name (Alter as needed)
+instance_name = "A-n39-k13"
 
 # Construct full file path
 filename = os.path.join(base_path, f"{instance_name}.txt")
@@ -184,22 +184,21 @@ else:
     print("No feasible solution found.")
     solution_summary.append(["No feasible solution", ""])
 
-# ✅ Convert to DataFrame
+# Convert to DataFrame
 df_solution = pd.DataFrame(solution_summary, columns=["Info", "Value"])  # Solution summary
 df_routes = pd.DataFrame(routes, columns=["Vehicle", "From", "To", "Travel Cost"])  # Vehicle routes
 
-# ✅ Reset index to prevent duplicate index errors
+# Reset index to prevent duplicate index errors
 df_solution.reset_index(drop=True, inplace=True)
 df_routes.reset_index(drop=True, inplace=True)
 
-# ✅ Add a blank row for spacing
 spacing_row = pd.DataFrame([["", "", "", ""]], columns=df_routes.columns)
 
-# ✅ Combine solution summary and routes in one sheet
+# Combine solution summary and routes in one sheet
 df_combined = pd.concat([df_solution, spacing_row, df_routes], ignore_index=True)
 
 # Define output file location
-output_file = r"C:\Users\Amand\OneDrive\Dokumenter\Københavns Universitet\3. år\Bachelorprojekt\LP_Vehicle_Flow.xlsx"
+output_file = r"C:\Users\" # Input the location of the instances
 
 # Load existing Excel file if it exists, otherwise create a new one
 try:
